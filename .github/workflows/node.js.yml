@@ -22,9 +22,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm test
-    - run: npm format
-    - run: npm check
-    - run: npm lint
+    - run: npm run format
+    - run: npm run check
+    - run: npm run lint
 
   install:
     runs-on: ubuntu-22.04
@@ -44,7 +44,7 @@ jobs:
         with:
           name: build
           if-no-files-found: error
-          path: .
+          path: ./out
 
   cypress-run:
     runs-on: ubuntu-22.04
@@ -57,7 +57,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build
-          path: build
+          path: ./out
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
