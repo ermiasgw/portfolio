@@ -7,7 +7,7 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   workflow_run:
-    workflows: [Continues Integration push]
+    workflows: [Continuous Integration]
     branches: 
     - main
     types:
