@@ -8,8 +8,8 @@ on:
   # Runs on pushes targeting the default branch
   workflow_run:
     workflows: [Continues Integration push]
-    branches: 
-    - main
+    branches:
+      - main
     types:
       - completed
 
