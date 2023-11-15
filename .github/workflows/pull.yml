@@ -22,9 +22,8 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm test
-      - run: npm format
-      - run: npm check
-      - run: npm lint
+      - run: npm run check
+      - run: npm run lint
 
   install:
     runs-on: ubuntu-22.04
