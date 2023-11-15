@@ -1,9 +1,8 @@
-import { Fira_Code } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Fira_Code } from "next/font/google";
 
 const firacode = Fira_Code({
-  weight: "400",
   subsets: ["latin"],
   display: "swap",
   adjustFontFallback: false,

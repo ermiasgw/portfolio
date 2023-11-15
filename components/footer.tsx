@@ -4,7 +4,6 @@ import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Fira_Code } from "next/font/google";
 
 const firacode = Fira_Code({
-  weight: "300",
   subsets: ["latin"],
   display: "swap",
   adjustFontFallback: false,
