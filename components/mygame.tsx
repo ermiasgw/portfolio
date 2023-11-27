@@ -149,7 +149,7 @@ export default function MyGame() {
           y = (head[1] - 1 + 20) % 20;
           break;
         case "DOWN":
-          y = (head[1] + 1) % 25;
+          y = (head[1] + 1) % 20;
           break;
         case "LEFT":
           x = (head[0] - 1 + 20) % 20;
@@ -205,7 +205,7 @@ export default function MyGame() {
 
     if (gameRunning) {
       document.addEventListener("keydown", handleKeyPress);
-      const gameInterval = setInterval(gameLoop, 200);
+      const gameInterval = setInterval(gameLoop, 100);
       return () => {
         clearInterval(gameInterval);
         document.removeEventListener("keydown", handleKeyPress);
@@ -214,13 +214,13 @@ export default function MyGame() {
   }, [snake, direction, food, gameRunning, gameOver, round]);
 
   return (
-    <div className="h-full relative grid grid-cols-2 p-8  border bg-card border-black  rounded-lg before:absolute before:h-[400px] before:w-[100%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl after:absolute after:bottom-0 after:right-0 after:h-[180px] after:w-[370px] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-['']  ">
+    <div className="h-full w-full relative grid grid-cols-2 p-8  border bg-card border-black  rounded-lg before:absolute before:h-[400px] before:w-[100%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl after:absolute after:bottom-0 after:right-0 after:h-[180px] after:w-[370px] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-['']  ">
       <div className="z-10 pl-4">
         <div className="rounded-xl w-fit h-full bg-[#05202E] relative">
           <canvas
             ref={canvasRef}
             width={200}
-            height={250}
+            height={220}
             className="rounded-xl bg-[#05202E]"
           />
           <div className="flex flex-col">
@@ -232,23 +232,25 @@ export default function MyGame() {
             >
               <h1>{gameOver ? "GAME OVER! " : "WELL DONE!"}</h1>
             </div>
-            {!gameRunning ? (
-              <Button
-                variant={"destructive"}
-                className="w-24 bg-[#FEA55F] hover:bg-[#FFB073] text-[#011627] mx-auto mt-5 text-sm"
-                onClick={handleStart}
-              >
-                start-game
-              </Button>
-            ) : (
-              <Button
-                variant={"ghost"}
-                className="w-24 bg-transparent hover:bg-transparent mx-auto mt-5 text-sm"
-                onClick={handleReStart}
-              >
-                start-again
-              </Button>
-            )}
+            <div className="flex items-center h-20">
+              {!gameRunning ? (
+                <Button
+                  variant={"destructive"}
+                  className="w-24 bg-[#FEA55F] hover:bg-[#FFB073] text-[#011627] mx-auto text-sm"
+                  onClick={handleStart}
+                >
+                  start-game
+                </Button>
+              ) : (
+                <Button
+                  variant={"ghost"}
+                  className="w-24 bg-transparent hover:bg-transparent mx-auto text-sm"
+                  onClick={handleReStart}
+                >
+                  start-again
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>

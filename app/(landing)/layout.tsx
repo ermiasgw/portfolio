@@ -16,14 +16,18 @@ export default function RootLayout({
 }) {
   return (
     <div
-      className={cn("h-full relative bg-primary border", firacode.className)}
+      className={cn(
+        "h-full pt-12 pb-10 relative bg-primary border",
+        firacode.className,
+      )}
     >
       <div className="fixed top-0 w-full">
         <Header />
       </div>
 
-      <div className="p-10 md:p-16 lg:p-24 w-full h-full">{children}</div>
-      <div className="fixed bottom-0 w-full">
+      <div>{children}</div>
+
+      <div className="fixed bottom-0 w-full hidden md:block">
         <Footer />
       </div>
     </div>

@@ -38,12 +38,14 @@ export default function Footer() {
   return (
     <div
       className={cn(
-        "hidden md:flex h-10  border-t items-center",
+        "flex h-10  border-t items-center fixed bottom-0 w-full divide-x",
         firacode.className,
       )}
     >
-      <h1 className="pl-5 pr-5 text-primary-foreground">Find me in:</h1>
-      <div className="grow self-stretch ">
+      <h1 className="pl-5 pr-5 text-primary-foreground border-r">
+        Find me in:
+      </h1>
+      <div className="grow self-stretch hidden md:block ">
         {routes.map((route) => (
           <Link
             key={route.id}
@@ -54,6 +56,20 @@ export default function Footer() {
             href={route.href}
           >
             {route.label} <span className="pl-2"></span>
+            <route.icon size={16} />
+          </Link>
+        ))}
+      </div>
+
+      <div className="grow self-stretch md:hidden ">
+        {routes.map((route) => (
+          <Link
+            key={route.id}
+            className={cn(
+              " text-primary-foreground pl-4 pr-5 h-full flex justify-center items-center hover:text-foreground float-left border-r",
+            )}
+            href={route.href}
+          >
             <route.icon size={16} />
           </Link>
         ))}
