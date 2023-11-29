@@ -2,7 +2,12 @@ import { Octokit } from "@octokit/core";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const apiKey = process.env.GITHUB_TOKEN;
+  /**
+   *
+   *
+   *
+   * *
+   */ const apiKey = process.env.GITHUB_TOKEN;
   const octokit = new Octokit({
     auth: apiKey,
   });
@@ -13,5 +18,23 @@ export async function GET() {
     },
   });
 
-  return NextResponse.json(res);
+  return JSON.stringify({
+    url: "string",
+    forks_url: "string",
+    commits_url: "string",
+    id: "string",
+    node_id: "string",
+    git_pull_url: "string",
+    git_push_url: "string",
+    html_url: "string",
+    files: {
+      string: {
+        filename: "string",
+        type: "string",
+        language: "string",
+        raw_url: "string",
+        size: 2,
+      },
+    },
+  });
 }

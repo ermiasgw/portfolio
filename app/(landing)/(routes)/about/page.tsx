@@ -14,17 +14,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { RiMarkdownFill } from "react-icons/ri";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState, useEffect } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { StringToBoolean } from "class-variance-authority/types";
-
-const icons = [
-  { icon: BsTerminal },
-  { icon: FiAward },
-  { icon: RiGamepadLine },
-];
+import { useState, useEffect, useRef } from "react";
+import CodeSamples from "@/components/codesamples";
 
 const infos = [
   {
@@ -89,54 +80,200 @@ const infos = [
       {
         title: "sff",
         value: `
-1 /**
-2 * fdsajlkj
+  1 /**
+  2 * fdsajlkj
+  * fsdkajl
+  * 
+  * fsdajlkjl
+  */
+
+  <datagrid></datagrid>
+  `,
+      },
+    ],
+  },
+];
+const hobies = [
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "sdfdf",
+        value: `
+                /**
+                 * fdsajlkj
+                 * fsdkajl
+                 * fsdkjl
+                 * fsdajlkjl
+                 */
+                `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "sdff",
+        value: `
+                /**
+                 * fdsajlkj
                  * fsdkajl
                  * 
                  * fsdajlkjl
                  */
-             
-                <datagrid></datagrid>
                 `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "h",
+        value: `
+                /**
+                 * fdsajlkj
+                 * fsdkajl
+                 * fsdkjl
+                 * fsdajlkjl
+                 */
+                `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "sff",
+        value: `
+  1 /**
+  2 * fdsajlkj
+  * fsdkajl
+  * 
+  * fsdajlkjl
+  */
+
+  <datagrid></datagrid>
+  `,
+      },
+    ],
+  },
+];
+const profesional = [
+  {
+    icon: IoMdArrowDropdown,
+    title: "fdgdgsgd",
+    color: "text-red-200",
+    values: [
+      {
+        title: "dgdgdsf",
+        value: `
+                /**
+                 * fdsajlkj
+                 * fsdkajl
+                 * fsdkjl
+                 * fsdajlkjl
+                 */
+                `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dggd",
+    color: "text-red-200",
+    values: [
+      {
+        title: "sdff",
+        value: `
+                /**
+                 * fdsajlkj
+                 * fsdkajl
+                 * 
+                 * fsdajlkjl
+                 */
+                `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "h",
+        value: `
+                /**
+                 * fdsajlkj
+                 * fsdkajl
+                 * fsdkjl
+                 * fsdajlkjl
+                 */
+                `,
+      },
+    ],
+  },
+  {
+    icon: IoMdArrowDropdown,
+    title: "dfdsf",
+    color: "text-red-200",
+    values: [
+      {
+        title: "sff",
+        value: `
+  1 /**
+  2 * fdsajlkj
+  * fsdkajl
+  * 
+  * fsdajlkjl
+  */
+
+  <datagrid></datagrid>
+  `,
       },
     ],
   },
 ];
 
+const icons = [
+  {
+    icon: BsTerminal,
+    info: profesional,
+    name: "lfksdjlkfds",
+  },
+  {
+    icon: FiAward,
+    info: infos,
+    name: "lfksdjlkfds",
+  },
+  {
+    icon: RiGamepadLine,
+    info: infos,
+    name: "lfksdjlkfds",
+  },
+];
+
 export default function About() {
-  const [tabs, setTabs] = useState(infos.flatMap((info) => info.values));
-  const [activeValue, setActiveValue] = useState<string>("sdfdf");
-  const [codes, setCodes] = useState<Object[] | null>(null);
+  const [activeInfo, setActiveInfo] = useState(infos);
+  const [tabs, setTabs] = useState([activeInfo[0].values[0]]);
+  const [activeValue, setActiveValue] = useState<string>(tabs[0].title);
 
-  useEffect(() => {
-    fetch("/api/about")
-      .then((res) => res.json())
-      .then((data) => {
-        const codearray: {
-          url: string;
-          language: string;
-          code: string;
-          description: string;
-          username: string;
-        }[] = [];
-        data.data.forEach((element: any) => {
-          let key: any = Object.values(element.files)[0];
-
-          fetch(key.raw_url)
-            .then((res) => res.text())
-            .then((code) => {
-              codearray.push({
-                url: element.html_url,
-                language: key.language,
-                code: code,
-                description: element.description,
-                username: element.owner.login,
-              });
-            });
-        });
-        setCodes(codearray);
-      });
-  }, []);
+  const changeInfo = (info) => {
+    setActiveInfo(info);
+    setTabs([info[0].values[0]]);
+    setActiveValue(info[0].values[0].title);
+  };
 
   const removetab = (tab: { title: string; value: string }) => {
     if (activeValue !== tab.title) {
@@ -185,9 +322,9 @@ export default function About() {
       <div className="flex col-span-2 divide-x">
         <div className="h-full flex flex-col gap-5 p-3 items-center w-9">
           {icons.map((icon, index) => (
-            <Link key={index} href={"/"}>
+            <Button key={index} onClick={() => changeInfo(icon.info)}>
               <icon.icon />
-            </Link>
+            </Button>
           ))}
         </div>
         <div className="h-full w-full flex flex-col">
@@ -197,9 +334,14 @@ export default function About() {
                 <IoMdArrowDropdown /> <span>personal-info</span>
               </div>
               <div className="pl-3 pt-3 pb-3">
-                {infos.map((info, index) => (
-                  <Accordion type="multiple" key={index} className="p-0">
-                    <AccordionItem value="item-1">
+                {activeInfo.map((info, index) => (
+                  <Accordion
+                    type="multiple"
+                    defaultValue={["0"]}
+                    key={index}
+                    className="p-0"
+                  >
+                    <AccordionItem value={String(index)}>
                       <AccordionTrigger className="p-0 gap-1">
                         <span className={cn("", info.color)}>
                           <info.icon />
@@ -289,60 +431,7 @@ export default function About() {
           <div></div>
         )}
       </Tabs>
-
-      <div className="h-full relative col-span-5">
-        <div className="h-8 border-b absolute top-0 w-full"></div>
-        <div className="h-full flex pt-8 ">
-          <div className="h-full w-full flex flex-col">
-            <div className="w-full p-5 bg-black">
-              {"// Code Snippet showcase"}
-            </div>
-            <div className="h-full p-3">
-              {codes ? (
-                codes.map((code, index) => (
-                  <div key={index} className="relative flex flex-col ">
-                    <div className="absolute flex top-0 right-0">
-                      <div className="flex pl-1 items-center h-8">
-                        <IoMdArrowDropdown /> <span>personal-info</span>
-                      </div>
-                      <div className="flex pl-1 items-center h-8">
-                        <IoMdArrowDropdown /> <span>personal-info</span>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <Avatar>
-                        <AvatarImage src="https://github.com/shadcn.png" />
-                        <AvatarFallback>CN</AvatarFallback>
-                      </Avatar>
-                      <div className="flex flex-col">
-                        <h1>dfdsf</h1>
-                        <h1>sdsdf</h1>
-                      </div>
-                    </div>
-                    <div>
-                      <SyntaxHighlighter
-                        language="javascript"
-                        style={dark}
-                        className="p-3"
-                      >
-                        {code.code}
-                      </SyntaxHighlighter>
-                    </div>
-                    <div className="border-t p-3">
-                      <p>lkjfdsjlkjklsd</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div></div>
-              )}
-            </div>
-          </div>
-          <div className=" border-l h-full w-5 p-[2px] ">
-            <div className="h-2 w-full m-auto bg-foreground"></div>
-          </div>
-        </div>
-      </div>
+      <CodeSamples />
     </div>
   );
 }

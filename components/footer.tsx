@@ -39,7 +39,6 @@ export default function Footer() {
     <div
       className={cn(
         "flex h-10  border-t items-center fixed bottom-0 w-full divide-x",
-        firacode.className,
       )}
     >
       <h1 className="pl-5 pr-5 text-primary-foreground border-r">

@@ -25,7 +25,6 @@ jobs:
       - run: npm run check
       - run: npm run lint
 
-
   cypress-run:
     runs-on: ubuntu-22.04
     steps:

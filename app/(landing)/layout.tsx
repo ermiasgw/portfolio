@@ -25,7 +25,7 @@ export default function RootLayout({
         <Header />
       </div>
 
-      <div>{children}</div>
+      <div className="h-full w-full">{children}</div>
 
       <div className="fixed bottom-0 w-full hidden md:block">
         <Footer />

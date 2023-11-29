@@ -5,7 +5,7 @@ import "./globals.css";
 const firacode = Fira_Code({
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: false,
+  variable: "--font-fira",
 });
 
 export const metadata: Metadata = {
@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={firacode.className}>{children}</body>
+    <html lang="en" className={firacode.variable}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -80,7 +80,7 @@ export default function Header() {
                 <Link
                   key={route.label}
                   className={cn(
-                    "pl-5 pt-2 pb-2 h-full flex items-center text-foreground hover:border-b-2 hover:border-b-accent",
+                    "pl-5 pt-2 pb-2 h-full flex items-center text-foreground hover:border-b-2 hover:border-b-accent font-fira",
                   )}
                   href={route.href}
                 >
