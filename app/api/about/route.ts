@@ -1,13 +1,9 @@
 import { Octokit } from "@octokit/core";
 import { NextResponse } from "next/server";
+export const revalidate = 30;
 
 export async function GET() {
-  /**
-   *
-   *
-   *
-   * *
-   */ const apiKey = process.env.GITHUB_TOKEN;
+  const apiKey = process.env.GITHUB_TOKEN;
   const octokit = new Octokit({
     auth: apiKey,
   });
@@ -17,24 +13,27 @@ export async function GET() {
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
-
-  return JSON.stringify({
-    url: "string",
-    forks_url: "string",
-    commits_url: "string",
-    id: "string",
-    node_id: "string",
-    git_pull_url: "string",
-    git_push_url: "string",
-    html_url: "string",
-    files: {
-      string: {
-        filename: "string",
-        type: "string",
-        language: "string",
-        raw_url: "string",
-        size: 2,
-      },
-    },
+  let codearray = [];
+  res.data.forEach((element: any) => {
+    let key: any = Object.values(element.files)[0];
+    codearray = codearray.concat({
+      url: element.html_url,
+      language: key.language,
+      raw_url: key.raw_url,
+      description: element.description,
+      username: element.owner.login,
+      avatar_url: element.owner.avatar_url,
+    });
   });
+
+  let codearray2 = [];
+
+  for (const element of codearray) {
+    const response = await fetch(element.raw_url);
+    const code = await response.text();
+    element["code"] = code;
+    codearray2.push(element);
+  }
+
+  return Response.json(codearray2);
 }

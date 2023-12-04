@@ -214,7 +214,7 @@ export default function MyGame() {
   }, [snake, direction, food, gameRunning, gameOver, round]);
 
   return (
-    <div className="h-full w-full relative grid grid-cols-2 p-8  border bg-card border-black  rounded-lg before:absolute before:h-[400px] before:w-[100%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl after:absolute after:bottom-0 after:right-0 after:h-[180px] after:w-[370px] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-['']  ">
+    <div className="h-fit w-full  relative grid grid-cols-2 p-8  border bg-card border-black  rounded-lg before:absolute before:h-[400px] before:w-[100%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl after:absolute after:bottom-0 after:right-0 after:h-[180px] after:w-[370px] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-['']  ">
       <div className="z-10 pl-4">
         <div className="rounded-xl w-fit h-full bg-[#05202E] relative">
           <canvas

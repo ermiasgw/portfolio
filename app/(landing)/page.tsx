@@ -7,10 +7,10 @@ export default function LandingPage() {
   return (
     <div
       className={cn(
-        " w-full h-full overflow-hidden grid grid-cols-2 before:absolute before:h-[50%] before:w-[80%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl before:opacity-40 after:opacity-40 after:absolute after:bottom-1/3 after:right-0 after:h-[50%] after:w-[50%] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-[''] md:before:hidden md:after:hidden ",
+        " w-full h-full overflow-hidden grid grid-cols-4 before:absolute before:h-[50%] before:w-[80%]  before:content-[''] before:-translate-x-10 before:-translate-y-1/3 before:rounded-full before:bg-gradient-to-tr before:from-secondary-foreground before:to-transparent before:blur-2xl before:opacity-40 after:opacity-40 after:absolute after:bottom-1/3 after:right-0 after:h-[50%] after:w-[50%] after:translate-x-2 after:translate-y-1/3 after:bg-gradient-to-t after:from-secondary after:blur-2xl after:content-[''] md:before:hidden md:after:hidden ",
       )}
     >
-      <div className="  pt-20 pl-10 md:pt-44 md:pl-44 col-span-2 md:col-span-1 ">
+      <div className="md:col-span-1 lg:col-span-2  pt-20 pl-10 lg:pt-44 lg:pl-44 col-span-4  ">
         <h1 className=" font-light text-lg">Hi all. I am</h1>
         <h1 className=" font-normal text-6xl">Ermias Gashaw </h1>
         <h1 className="text-secondary-foreground font-light text-xl mb-32 md:mb-10 ">
@@ -33,7 +33,7 @@ export default function LandingPage() {
           <span className=" text-accent-foreground">{`"https://github.com/ermiasgw"`}</span>
         </Link>
       </div>
-      <div className="lg:p-24 lg:pt-20 md:p-5 lg:pl-5 hidden md:block ">
+      <div className="md:col-span-3 lg:col-span-2 lg:p-24 lg:pt-20 md:p-20 lg:pl-5 hidden md:block ">
         <MyGame />
       </div>
     </div>

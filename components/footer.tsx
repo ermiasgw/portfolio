@@ -14,13 +14,13 @@ const routes = [
     id: 2,
     icon: FaLinkedin,
     label: "",
-    href: "/di",
-    float: "float-left border-l",
+    href: "https://www.linkedin.com/in/ermiasgw",
+    float: "float-left",
   },
   {
     id: 1,
     label: "",
-    href: "/dashboard",
+    href: "https://www.discordapp.com/users/ermiasgw",
     float: "float-left border-l border-r",
     icon: FaDiscord,
   },
@@ -29,7 +29,7 @@ const routes = [
     id: 3,
     icon: FaGithub,
     label: "@ermiasgw ",
-    href: "/",
+    href: "https://www.github.com/ermiasgw",
     float: "float-right border-l",
   },
 ];
@@ -37,11 +37,9 @@ const routes = [
 export default function Footer() {
   return (
     <div
-      className={cn(
-        "flex h-10  border-t items-center fixed bottom-0 w-full divide-x",
-      )}
+      className={cn("flex h-10  border-t items-center fixed bottom-0 w-full")}
     >
-      <h1 className="pl-5 pr-5 text-primary-foreground border-r">
+      <h1 className="pl-5 pr-5 text-primary-foreground border-r flex items-center h-full">
         Find me in:
       </h1>
       <div className="grow self-stretch hidden md:block ">

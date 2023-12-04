@@ -73,6 +73,9 @@ module.exports = {
       fontFamily: {
         fira: ["var(--font-fira)"],
       },
+      gridAutoRows: {
+        "2fr": "max-content",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

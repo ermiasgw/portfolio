@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fira_Code } from "next/font/google";
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { IoMenu } from "react-icons/io5";
 import Footer from "./footer";
+import { usePathname } from "next/navigation";
 
 const firacode = Fira_Code({
   subsets: ["latin"],
@@ -31,17 +33,13 @@ const routes = [
   },
   {
     label: "_projects",
-    href: "/ptojects",
+    href: "/projects",
     float: " float-left border-r border-l",
-  },
-  {
-    label: "_contact-me",
-    href: "/contact",
-    float: " float-right border-l",
   },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   return (
     <div className="h-12 w-full grid grid-cols-12 border-b items-center md:divide-x">
       <Link
@@ -56,7 +54,9 @@ export default function Header() {
             key={route.label}
             className={cn(
               "text-primary-foreground pl-5 pr-5 h-full flex justify-center items-center hover:text-foreground hover:border-b-2 hover:border-b-accent",
-              route.float,
+              pathname === route.href
+                ? "border-b-2 border-b-accent " + route.float
+                : route.float,
             )}
             href={route.href}
           >
