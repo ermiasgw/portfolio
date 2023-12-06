@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
