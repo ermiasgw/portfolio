@@ -9,6 +9,8 @@ const firacode = Fira_Code({
   adjustFontFallback: false,
 });
 
+export const revalidate = 60;
+
 export default function RootLayout({
   children,
 }: {
@@ -16,14 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <div
-      className={cn("h-full relative bg-primary border", firacode.className)}
+      className={cn(
+        "h-screen pt-12 pb-10 relative bg-primary border",
+        firacode.className,
+      )}
     >
-      <div className="fixed top-0 w-full">
+      <div className="fixed top-0 w-full z-10 bg-primary">
         <Header />
       </div>
 
-      <div className="p-10 md:p-16 lg:p-24 w-full h-full">{children}</div>
-      <div className="fixed bottom-0 w-full">
+      <div className="h-full w-full">{children}</div>
+
+      <div className="fixed bottom-0 w-full hidden md:block">
         <Footer />
       </div>
     </div>
