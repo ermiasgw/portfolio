@@ -7,7 +7,7 @@ export async function GET() {
   }
 
   const octokit = new Octokit({
-    auth: "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",
+    auth: "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",
   });
 
   const res = await octokit.request("GET /gists", {
