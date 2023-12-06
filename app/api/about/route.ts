@@ -5,9 +5,9 @@ export async function GET() {
   if (!apiKey) {
     throw new Error(`Error environment ${apiKey}`);
   }
-  console.log(apiKey);
+
   const octokit = new Octokit({
-    auth: apiKey,
+    auth: "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",
   });
 
   const res = await octokit.request("GET /gists", {
