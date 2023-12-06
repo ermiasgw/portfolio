@@ -80,8 +80,11 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+        run: |
+          echo "MY_VARIABLE: $GITHUB_TOKEN"
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          
       - name: Optimize Images
         run: ${{ steps.detect-package-manager.outputs.runner }} next-image-export-optimizer
       - name: Upload artifact
