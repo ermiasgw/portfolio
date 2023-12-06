@@ -13,7 +13,7 @@ export async function GET() {
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
-  let codearray = [];
+  let codearray: any[] = [];
   res.data.forEach((element: any) => {
     let key: any = Object.values(element.files)[0];
     codearray = codearray.concat({

@@ -29,8 +29,9 @@ import {
   BiLogoTailwindCss,
   BiLogoTypescript,
 } from "react-icons/bi";
-import { SiFastapi, SiExpress } from "react-icons/si";
+import { SiFastapi, SiExpress, SiWebstorm } from "react-icons/si";
 import { MdGroupAdd } from "react-icons/md";
+import ExportedImage from "next-image-export-optimizer";
 
 const lables = [
   {
@@ -76,6 +77,11 @@ const lables = [
   {
     title: "Postgres",
     icon: BiLogoPostgresql,
+    color: "bg-[#43D9AD]",
+  },
+  {
+    title: "Web Socket",
+    icon: SiWebstorm,
     color: "bg-[#43D9AD]",
   },
 ];
@@ -125,27 +131,37 @@ const project = [
     github: "https://github.com/ermiasgw/study_helper",
     labels: [lables[2], lables[3], lables[8]],
   },
+  {
+    title: "whatsapp api",
+    picture: "/whatsappapi.jpeg",
+    detail:
+      "It is an API with chat functionality similar to WhatsApp's API server.",
+    link: "",
+    github: "https://github.com/ermiasgw/whatsapp-api",
+    labels: [lables[2], lables[3], lables[9]],
+  },
 ];
 
 export default function Projects() {
   const [projects, setProjects] = useState(project);
   const [filters, setFilters] = useState<string[]>([]);
 
-  const filterProject = (filters) => {
+  const filterProject = (filters: any) => {
     if (filters.length === 0 || filters.length === lables.length) {
       setProjects(project);
     } else {
       setProjects(
         project.filter((item) =>
           filters.some(
-            (filter) => item.labels.map((obj) => obj.title)?.includes(filter),
+            (filter: any) =>
+              item.labels.map((obj) => obj.title)?.includes(filter),
           ),
         ),
       );
     }
   };
 
-  const filterLabels = (title: string, event) => {
+  const filterLabels = (title: string, event: any) => {
     if (event.target.ariaChecked === "false") {
       setFilters((item) => {
         const filter = [...item, title];
@@ -248,7 +264,7 @@ export default function Projects() {
 
                 <Card className=" bg-[#011221] p-0 pb-12 relative h-64">
                   <div className="p-0 w-full h-24  rounded-t-lg relative">
-                    <Image
+                    <ExportedImage
                       src={project.picture}
                       fill
                       alt={project.title}

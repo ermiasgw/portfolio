@@ -100,7 +100,7 @@ const personal_info = {
                 `,
         },
         {
-          title: "distinctive-qualities",
+          title: "qualities",
           value: `
 /**
  * I am creative
