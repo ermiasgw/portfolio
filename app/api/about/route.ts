@@ -1,13 +1,13 @@
 import { Octokit } from "@octokit/core";
 
 export async function GET() {
-  const apiKey = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+  const apiKey = process.env.GITHUB_TOKEN;
   if (!apiKey) {
     throw new Error(`Error environment ${apiKey}`);
   }
 
   const octokit = new Octokit({
-    auth: "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",
+    auth: apiKey,
   });
 
   const res = await octokit.request("GET /gists", {
