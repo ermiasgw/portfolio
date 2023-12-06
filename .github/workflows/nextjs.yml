@@ -86,7 +86,7 @@ jobs:
         with:
           path: ./out
         env:
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+          NEXT_PUBLIC_GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
 
   # Deployment job
   deploy:

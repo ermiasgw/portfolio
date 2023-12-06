@@ -1,9 +1,10 @@
 import { Octokit } from "@octokit/core";
-import { NextResponse } from "next/server";
-export const revalidate = 30;
 
 export async function GET() {
-  const apiKey = process.env.GITHUB_TOKEN;
+  const apiKey = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+  if (!apiKey) {
+    throw new Error(`Error environment ${apiKey}`);
+  }
   const octokit = new Octokit({
     auth: apiKey,
   });

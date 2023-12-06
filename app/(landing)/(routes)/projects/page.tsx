@@ -88,7 +88,7 @@ const lables = [
 const project = [
   {
     title: "portfolio",
-    picture: "/portfolio.jpeg",
+    picture: "portfolio.jpeg",
     detail:
       "This is my portfolio site showcasing my skills. It includes games, closable and addable tabs, and filtering options.",
     link: "",
@@ -97,7 +97,7 @@ const project = [
   },
   {
     title: "ai-toolkits",
-    picture: "/ai-toolkits.jpeg",
+    picture: "ai-toolkits.jpeg",
     detail:
       "AI Toolkits is a user-friendly and versatile project designed to simplify the integration and utilization of diverse AI capabilities.",
     link: "",
@@ -106,7 +106,7 @@ const project = [
   },
   {
     title: "Job board",
-    picture: "/job-board.png",
+    picture: "job-board.png",
     detail:
       "A Django job board is a web-based platform designed and developed using the Django web framework, which serves as a centralized hub for connecting job seekers and employers within the context of the Django programming ecosystem.",
     link: "",
@@ -115,7 +115,7 @@ const project = [
   },
   {
     title: "book tracker",
-    picture: "/book-tracker.jpeg",
+    picture: "book-tracker.jpeg",
     detail:
       "This Book tracking project is an innovative solution for avid readers who want to keep track of their reading progress.",
     link: "",
@@ -124,7 +124,7 @@ const project = [
   },
   {
     title: "study helper",
-    picture: "/study-helper.jpeg",
+    picture: "study-helper.jpeg",
     detail:
       "Study Helper is a user-friendly tool designed to assist with studying, offering access to various APIs such as Wikipedia and YouTube.",
     link: "",
@@ -133,7 +133,7 @@ const project = [
   },
   {
     title: "whatsapp api",
-    picture: "/whatsappapi.jpeg",
+    picture: "whatsappapi.jpeg",
     detail:
       "It is an API with chat functionality similar to WhatsApp's API server.",
     link: "",

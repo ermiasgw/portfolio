@@ -35,12 +35,14 @@ export default function CodeSamples() {
 
   useEffect(() => {
     try {
-      fetch("/api/about", { next: { revalidate: 30 } })
+      fetch("/api/about")
         .then((res) => res.json())
         .then((data) => {
           setCodes(data);
         });
-    } catch {}
+    } catch (error: any) {
+      throw new Error(`Error fetching data: ${error.message}`);
+    }
   }, []);
 
   return (
